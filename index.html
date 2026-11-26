@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ТЭК ВОСТОК</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: деловой, надёжный, «железнодорожный» — без лишних слов
+   IDEA: сайт ведёт себя как борт грузового состава — тёмный металл, сигнальный красный, трафаретные номера
+   PICTURE: состав из полувагонов и контейнерной платформы идёт по степи на рассвете
+   COLOUR and TYPE: графит #15191f, сигнальный красный #d9362b, белый; Onest для заголовков + Inter
+   LAYOUT: верхняя полоса контактов → меню → герой со сценой → услуги → новости → о компании → подвал */
+:root{color-scheme:light dark;
+--bg:light-dark(#ffffff,#0f1216);--ink:light-dark(#15191f,#eef0f3);--mute:light-dark(#5b636e,#a3abb6);
+--soft:light-dark(#f2f3f5,#181c22);--line:light-dark(#e1e4e8,#2a3039);--red:#d9362b;--red2:light-dark(#b8281f,#ff5a4c);
+--steel:#15191f;--card:light-dark(#ffffff,#161a20)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif;overflow-x:clip}
+a{color:inherit}
+h1,h2,h3,.logo{font-family:Onest,Inter,sans-serif;line-height:1.08;text-wrap:balance;margin:0}
+h2{font-size:clamp(28px,3.6vw,42px);font-weight:700}
+.wrap{max-width:1240px;margin:0 auto;padding:0 max(4vw,16px)}
+.band{padding:clamp(44px,6vw,88px) 0}
+/* top bar */
+.top{background:var(--steel);color:#cfd4db;font-size:14px}
+.top .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between;min-height:42px;padding-block:6px}
+.top a{text-decoration:none;color:#fff}.top a:hover{color:#ff8a80}
+.top .c{display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center}
+.top svg{width:15px;height:15px;vertical-align:-2px;margin-right:6px;fill:none;stroke:currentColor;stroke-width:2}
+/* header */
+header{position:sticky;top:0;z-index:40;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:24px;min-height:72px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:22px;letter-spacing:.01em;white-space:nowrap}
+.logo i{display:grid;place-items:center;width:40px;height:40px;border-radius:9px;background:var(--red);color:#fff;font-style:normal;font-size:17px}
+nav{margin-left:auto}
+nav>ul{list-style:none;display:flex;gap:4px;margin:0;padding:0;align-items:center}
+nav a,nav button{display:flex;align-items:center;gap:6px;min-height:44px;padding:0 12px;border-radius:8px;text-decoration:none;font:500 15px Inter,sans-serif;color:var(--ink);background:none;border:0;cursor:pointer}
+nav a:hover,nav button:hover{background:var(--soft)}
+nav a.on{color:var(--red2)}
+.dd{position:relative}
+.dd ul{list-style:none;margin:0;padding:8px;position:absolute;top:100%;left:0;width:340px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 40px rgb(0 0 0/.14);display:none}
+.dd:hover ul,.dd.open ul{display:block}
+.dd ul a{min-height:auto;padding:10px 12px;line-height:1.35;font-size:14.5px}
+.call{display:flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:10px;background:var(--red);color:#fff;text-decoration:none;font-weight:600;white-space:nowrap}
+.call:hover{background:#c02d23}
+.burger{display:none;margin-left:auto;width:44px;height:44px;border:1px solid var(--line);border-radius:10px;background:none;color:var(--ink);cursor:pointer}
+:focus-visible{outline:3px solid #ff8a80;outline-offset:2px}
+/* hero */
+.hero{position:relative;background:#1a1f27;color:#fff;overflow:hidden}
+.hero .scene{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;min-height:clamp(460px,62vh,620px);display:flex;flex-direction:column;justify-content:flex-start;padding-top:clamp(48px,8vw,104px)}
+.hero h1{font-size:clamp(36px,5.2vw,60px);font-weight:800;max-width:14ch}
+.hero p{font-size:17px;max-width:46ch;color:#e3e6ea;margin:18px 0 28px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.ghost{display:flex;align-items:center;min-height:48px;padding:0 20px;border-radius:10px;border:1.5px solid rgb(255 255 255/.55);color:#fff;text-decoration:none;font-weight:600}
+.ghost:hover{background:rgb(255 255 255/.1)}
+.hero .call{min-height:48px;padding:0 22px}
+/* services */
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px;margin-bottom:32px}
+.head a{color:var(--red2);font-weight:600;text-decoration:none}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.svc{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;text-decoration:none;transition:transform .25s,box-shadow .25s}
+.svc:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgb(0 0 0/.12)}
+.svc .pic{aspect-ratio:4/3;background:linear-gradient(160deg,#2a313b,#141820)}
+.svc .pic svg{width:100%;height:100%;display:block}
+.svc h3{font-size:18px;font-weight:600;padding:18px 20px 6px}
+.svc span{padding:0 20px 20px;margin-top:auto;color:var(--red2);font-weight:600;font-size:14.5px}
+/* news */
+.news{background:var(--soft)}
+.ng{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.n{background:var(--card);border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:14px;border:1px solid var(--line)}
+.n time{font-size:14px;color:var(--mute)}
+.n h3{font-size:19px;font-weight:600}
+.n a{margin-top:auto;color:var(--red2);font-weight:600;text-decoration:none}
+.note{font-size:13px;color:var(--mute);margin-top:18px}
+/* about */
+.about .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,72px);align-items:center}
+.about h1{font-size:clamp(34px,4.4vw,52px);font-weight:800;margin-bottom:20px}
+.about p{color:var(--mute);margin:0 0 14px;max-width:62ch}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;background:var(--line);border-radius:16px;overflow:hidden}
+.facts div{background:var(--card);padding:24px}
+.facts b{display:block;font:700 clamp(24px,3vw,32px) Onest,sans-serif;color:var(--red2)}
+.facts small{color:var(--mute);font-size:14px}
+/* footer */
+footer{background:var(--steel);color:#bfc5cd;font-size:15px}
+footer .wrap{display:grid;grid-template-columns:1.3fr 1.4fr 1fr 1.2fr;gap:32px;padding-block:56px 36px}
+footer h4{color:#fff;font:600 16px Onest,sans-serif;margin:0 0 14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+footer a{text-decoration:none}footer a:hover{color:#fff}
+footer .logo{color:#fff;margin-bottom:14px}
+.copy{border-top:1px solid #2b313a;font-size:13.5px}
+.copy .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding-block:18px}
+/* cookies */
+.ck{position:fixed;left:16px;right:16px;bottom:16px;z-index:60;max-width:760px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 20px 50px rgb(0 0 0/.22);padding:20px;display:none}
+.ck.show{display:block}
+.ck p{margin:0 0 14px;font-size:14.5px;color:var(--mute)}
+.ck .row{display:flex;flex-wrap:wrap;gap:10px}
+.b{min-height:44px;padding:0 16px;border-radius:10px;border:1.5px solid var(--line);background:none;color:var(--ink);font:600 14.5px Inter,sans-serif;cursor:pointer}
+.b.r{background:var(--red);border-color:var(--red);color:#fff}
+.ov{position:fixed;inset:0;z-index:70;background:rgb(0 0 0/.5);display:none;place-items:center;padding:16px}
+.ov.show{display:grid}
+.pn{background:var(--card);border-radius:18px;max-width:520px;width:100%;padding:26px;position:relative}
+.pn h3{font-size:22px;margin-bottom:16px}
+.x{position:absolute;top:12px;right:12px;width:44px;height:44px;border:0;background:none;color:var(--ink);font-size:26px;cursor:pointer;border-radius:10px}
+.opt{display:flex;gap:16px;justify-content:space-between;align-items:center;padding:14px 0;border-top:1px solid var(--line)}
+.opt small{display:block;color:var(--mute)}
+.sw{position:relative;width:52px;height:30px;flex:none}
+.sw input{opacity:0;position:absolute;inset:0;margin:0;cursor:pointer}
+.sw i{position:absolute;inset:0;border-radius:30px;background:#9aa2ad;transition:.2s;pointer-events:none}
+.sw i::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:.2s}
+.sw input:checked+i{background:var(--red)}.sw input:checked+i::after{left:25px}
+.sw input:disabled+i{opacity:.55}
+.sw input:focus-visible+i{outline:3px solid #ff8a80;outline-offset:2px}
+.train{animation:roll 1.4s ease-out both}
+@keyframes roll{from{transform:translateX(-6%);opacity:0}to{transform:none;opacity:1}}
+@media(prefers-reduced-motion:reduce){.train{animation:none}.svc{transition:none}}
+@media(max-width:1060px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}footer .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}header .call{display:none}}
+@media(max-width:900px){
+ .burger{display:grid;place-items:center}
+ nav{position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);display:none;padding:8px max(4vw,16px) 16px}
+ nav.open{display:block}
+ nav>ul{flex-direction:column;align-items:stretch}
+ .dd ul{position:static;width:auto;box-shadow:none;border:0;padding:0 0 0 12px;display:none}
+ .dd:hover ul{display:none}.dd.open ul{display:block}
+ .ng{grid-template-columns:minmax(0,1fr)}
+ .about .wrap{grid-template-columns:minmax(0,1fr)}
+}
+@media(max-width:600px){.grid,footer .wrap{grid-template-columns:minmax(0,1fr)}.hero .wrap{min-height:560px}.top .hrs{display:none}}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <div class="c">
+    <a href="mailto:info@tek-vostok.kz"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>info@tek-vostok.kz</a>
+    <a href="tel:+77475701255"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>+7 (747) 570-12-55</a>
+  </div>
+  <span class="hrs">ПН–ПТ с 09:00 до 18:00</span>
+</div></div>
+
+<header><div class="wrap">
+  <a class="logo" href="#top"><i>ТВ</i>ТЭК ВОСТОК</a>
+  <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="nav">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+  </button>
+  <nav id="nav"><ul>
+    <li><a class="on" href="#top">Главная</a></li>
+    <li class="dd" id="dd"><button aria-expanded="false" id="ddb">Услуги <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg></button>
+      <ul id="ddl"></ul></li>
+    <li><a href="#news">Новости</a></li>
+    <li><a href="#about">О компании</a></li>
+    <li><a href="#social">Социальная ответственность</a></li>
+    <li><a href="#contacts">Контакты</a></li>
+  </ul></nav>
+  <a class="call" href="tel:+77475701255">+7 (747) 570-12-55</a>
+</div></header>
+
+<main id="top">
+<section class="hero">
+  <svg class="scene" viewBox="0 0 1600 640" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2230"/><stop offset=".55" stop-color="#5a3a3a"/><stop offset=".85" stop-color="#e0774f"/><stop offset="1" stop-color="#f3a764"/></linearGradient>
+      <radialGradient id="sun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffe3b0"/><stop offset=".4" stop-color="#ffc178" stop-opacity=".9"/><stop offset="1" stop-color="#ff9a5a" stop-opacity="0"/></radialGradient>
+      <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2b30"/><stop offset="1" stop-color="#1d1a1f"/></linearGradient>
+      <linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b434e"/><stop offset="1" stop-color="#1c2128"/></linearGradient>
+      <linearGradient id="shade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#14181d" stop-opacity=".85"/><stop offset=".45" stop-color="#14181d" stop-opacity=".55"/><stop offset=".75" stop-color="#14181d" stop-opacity="0"/></linearGradient>
+      <g id="wh"><circle r="13" fill="#0e1114"/><circle r="5" fill="#59616b"/></g>
+      <g id="gon">
+        <path d="M0 0h196l-6 62H6z" fill="url(#body)"/>
+        <path d="M0 0h196v5H0z" fill="#6b7480"/>
+        <path d="M8 -14q30 -16 60 -6t62 -4 58 8l4 16H4z" fill="#0d0f12"/>
+        <g stroke="#2c333c" stroke-width="3"><path d="M40 6v52M80 6v52M118 6v52M156 6v52"/></g>
+        <rect x="64" y="24" width="68" height="18" rx="2" fill="#d9362b"/>
+        <rect x="2" y="62" width="192" height="8" fill="#0e1114"/>
+        <use href="#wh" x="28" y="80"/><use href="#wh" x="58" y="80"/><use href="#wh" x="138" y="80"/><use href="#wh" x="168" y="80"/>
+      </g>
+      <g id="cnt">
+        <rect x="2" y="56" width="192" height="14" fill="#0e1114"/>
+        <rect x="6" y="-8" width="90" height="64" fill="#2f5d8a"/><rect x="100" y="-8" width="90" height="64" fill="#d9362b"/>
+        <g stroke="#000" stroke-opacity=".25" stroke-width="3"><path d="M18 -4v56M30 -4v56M42 -4v56M54 -4v56M66 -4v56M78 -4v56M112 -4v56M124 -4v56M136 -4v56M148 -4v56M160 -4v56M172 -4v56"/></g>
+        <use href="#wh" x="28" y="80"/><use href="#wh" x="58" y="80"/><use href="#wh" x="138" y="80"/><use href="#wh" x="168" y="80"/>
+      </g>
+    </defs>
+    <rect width="1600" height="640" fill="url(#sky)"/>
+    <circle cx="1180" cy="430" r="190" fill="url(#sun)"/>
+    <circle cx="1180" cy="430" r="52" fill="#ffd9a0"/>
+    <path d="M0 470 Q220 420 460 455 T930 440 T1360 430 T1600 445 V640 H0Z" fill="#4a3236" opacity=".8"/>
+    <path d="M0 500 Q300 470 620 492 T1200 480 T1600 490 V640 H0Z" fill="url(#hill)"/>
+    <g class="train">
+      <g transform="translate(1340 430)">
+        <path d="M0 10h150q24 0 30 30l6 32H0z" fill="#d9362b"/>
+        <path d="M0 10h110V-30h-80z" fill="#b8281f"/>
+        <rect x="70" y="-22" width="34" height="24" rx="3" fill="#ffd9a0" opacity=".85"/>
+        <rect x="0" y="40" width="186" height="6" fill="#f3f3f3" opacity=".8"/>
+        <rect x="0" y="72" width="188" height="8" fill="#0e1114"/>
+        <use href="#wh" x="30" y="90"/><use href="#wh" x="62" y="90"/><use href="#wh" x="124" y="90"/><use href="#wh" x="156" y="90"/>
+        <circle cx="178" cy="54" r="5" fill="#fff4c4"/>
+      </g>
+      <use href="#gon" transform="translate(1136 440)"/>
+      <use href="#cnt" transform="translate(932 440)"/>
+      <use href="#gon" transform="translate(728 440)"/>
+      <use href="#gon" transform="translate(524 440)"/>
+      <use href="#cnt" transform="translate(320 440)"/>
+      <use href="#gon" transform="translate(116 440)"/>
+      <use href="#gon" transform="translate(-88 440)"/>
+    </g>
+    <rect x="0" y="532" width="1600" height="10" fill="#0b0d10"/>
+    <rect x="0" y="530" width="1600" height="3" fill="#8b929b"/>
+    <path d="M0 542h1600v98H0z" fill="#17161a"/>
+    <rect width="1600" height="640" fill="url(#shade)"/>
+  </svg>
+  <div class="wrap">
+    <h1>Логистика и сервис для требовательных клиентов</h1>
+    <p>Железнодорожные и контейнерные перевозки, транспортное экспедирование и информационное сопровождение грузов — от заявки до станции назначения.</p>
+    <div class="btns">
+      <a class="call" href="tel:+77475701255">Позвонить: +7 (747) 570-12-55</a>
+      <a class="ghost" href="#services">Наши услуги</a>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="services"><div class="wrap">
+  <div class="head"><h2>Услуги</h2></div>
+  <div class="grid" id="svc"></div>
+</div></section>
+
+<section class="band news" id="news"><div class="wrap">
+  <div class="head"><h2>Последние новости и события</h2><a href="#news">Все новости →</a></div>
+  <div class="ng" id="ng"></div>
+  <p class="note">Новости — пример заполнения, замените на свои.</p>
+</div></section>
+
+<section class="band about" id="about"><div class="wrap">
+  <div>
+    <h1>ТЭК ВОСТОК</h1>
+    <p>ТЭК ВОСТОК — транспортно-экспедиционная компания. Мы организуем перевозку грузов железнодорожным транспортом в универсальном подвижном составе и контейнерах по Казахстану, России и странам СНГ.</p>
+    <p>Берём на себя подбор подвижного состава, оформление документов, расчёт тарифа и контроль груза в пути. Клиент получает одного ответственного менеджера и понятный статус перевозки на каждом этапе.</p>
+    <p id="social">Мы ведём бизнес ответственно: соблюдаем требования безопасности на транспорте, бережём окружающую среду и поддерживаем местные сообщества в регионах присутствия.</p>
+  </div>
+  <div class="facts">
+    <div><b>4</b><small>направления услуг</small></div>
+    <div><b>24/7</b><small>контроль груза в пути</small></div>
+    <div><b>1</b><small>менеджер на весь заказ</small></div>
+    <div><b>СНГ</b><small>география перевозок</small></div>
+  </div>
+</div></section>
+</main>
+
+<footer id="contacts">
+  <div class="wrap">
+    <div><a class="logo" href="#top"><i>ТВ</i>ТЭК ВОСТОК</a><p style="margin:0">© ТОО «ТЭК ВОСТОК». Все права защищены</p></div>
+    <div><h4>Услуги</h4><ul id="fsvc"></ul></div>
+    <div><h4>Полезная информация</h4><ul><li><a href="#" id="pol">Политика конфиденциальности</a></li><li><a href="#" id="ckopen">Настройки cookie</a></li></ul></div>
+    <div><h4>Контакты</h4><ul>
+      <li>Казахстан</li>
+      <li><a href="tel:+77475701255">+7 (747) 570-12-55</a></li>
+      <li>ПН–ПТ с 09:00 до 18:00</li>
+      <li><a href="mailto:info@tek-vostok.kz">info@tek-vostok.kz</a></li>
+    </ul></div>
+  </div>
+  <div class="copy"><div class="wrap"><span>Copyright © <span id="yr">2026</span> ТЭК ВОСТОК</span><span>Логистика и сервис для требовательных клиентов</span></div></div>
+</footer>
+
+<div class="ck" id="ck" role="dialog" aria-label="Cookie-файлы">
+  <p>Мы используем cookie-файлы, чтобы сайт работал корректно и чтобы понимать, как им пользуются. Вы можете принять все cookie, отклонить несущественные или настроить выбор.</p>
+  <div class="row">
+    <button class="b" id="ckm">Управление cookie-файлами</button>
+    <button class="b" id="ckd">Отклонить несущественное</button>
+    <button class="b r" id="cka">Принять все</button>
+  </div>
+</div>
+<div class="ov" id="ov"><div class="pn" role="dialog" aria-modal="true" aria-labelledby="pnh">
+  <button class="x" id="ckx" aria-label="Закрыть">×</button>
+  <h3 id="pnh">Центр предпочтений cookie-файлов</h3>
+  <div class="opt"><div><b>Строго необходимые</b><small>Нужны для работы сайта. Всегда включены.</small></div><label class="sw"><input type="checkbox" checked disabled aria-label="Строго необходимые"><i></i></label></div>
+  <div class="opt"><div><b>Аналитические</b><small>Яндекс Метрика — помогает улучшать сайт.</small></div><label class="sw"><input type="checkbox" id="an" aria-label="Аналитические"><i></i></label></div>
+  <div class="row" style="display:flex;justify-content:flex-end;margin-top:16px"><button class="b r" id="cks">Сохранить выбор</button></div>
+</div></div>
+
+<script>
+{
+const S=[
+ {t:'Железнодорожные перевозки в универсальном подвижном составе',k:'gon'},
+ {t:'Контейнерные перевозки',k:'cnt'},
+ {t:'Услуги по предоставлению базового информирования',k:'info'},
+ {t:'Транспортное экспедирование',k:'route'}];
+const ART={
+ gon:`<rect x="30" y="140" width="260" height="8" fill="#8b929b"/><path d="M50 70h220l-8 60H58z" fill="#3b434e"/><path d="M56 60q40-18 80-6t80-4 50 10l4 10H52z" fill="#0d0f12"/><rect x="120" y="88" width="80" height="20" fill="#d9362b"/><circle cx="90" cy="140" r="12" fill="#0e1114"/><circle cx="230" cy="140" r="12" fill="#0e1114"/>`,
+ cnt:`<rect x="30" y="148" width="260" height="8" fill="#8b929b"/><rect x="50" y="64" width="108" height="72" fill="#2f5d8a"/><rect x="162" y="64" width="108" height="72" fill="#d9362b"/><g stroke="#000" stroke-opacity=".25" stroke-width="4">${[66,82,98,114,130,146,178,194,210,226,242,258].map(x=>`<path d="M${x} 70v60"/>`).join('')}</g><rect x="46" y="136" width="228" height="10" fill="#0e1114"/>`,
+ info:`<rect x="70" y="46" width="180" height="110" rx="10" fill="#3b434e"/><rect x="82" y="58" width="156" height="86" rx="4" fill="#1a1f27"/><path d="M96 126l30-26 24 14 34-34 40 28" fill="none" stroke="#d9362b" stroke-width="5" stroke-linejoin="round"/><circle cx="184" cy="80" r="6" fill="#fff"/><rect x="140" y="156" width="40" height="14" fill="#3b434e"/>`,
+ route:`<path d="M60 150C110 60 170 170 250 60" fill="none" stroke="#8b929b" stroke-width="6" stroke-dasharray="4 12" stroke-linecap="round"/><circle cx="60" cy="150" r="14" fill="#fff"/><circle cx="60" cy="150" r="6" fill="#1a1f27"/><path d="M250 30c-18 0-30 14-30 28 0 20 30 46 30 46s30-26 30-46c0-14-12-28-30-28z" fill="#d9362b"/><circle cx="250" cy="58" r="10" fill="#fff"/>`};
+const id=s=>'svc'+S.indexOf(s);
+document.getElementById('svc').innerHTML=S.map(s=>`<a class="svc" href="#services" id="${id(s)}"><div class="pic"><svg viewBox="0 0 320 200" aria-hidden="true">${ART[s.k]}</svg></div><h3>${s.t}</h3><span>Подробнее →</span></a>`).join('');
+const li=S.map(s=>`<li><a href="#${id(s)}">${s.t}</a></li>`).join('');
+document.getElementById('ddl').innerHTML=li;document.getElementById('fsvc').innerHTML=li;
+const N=[
+ {d:'20.11.2026',t:'ТЭК ВОСТОК запустил новое направление контейнерных перевозок'},
+ {d:'05.11.2026',t:'Итоги работы компании за октябрь 2026 года'},
+ {d:'15.10.2026',t:'Расширили географию перевозок по странам СНГ'}];
+document.getElementById('ng').innerHTML=N.map(n=>`<article class="n"><time>${n.d}</time><h3>${n.t}</h3><a href="#news">Подробнее →</a></article>`).join('');
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+const nav=document.getElementById('nav'),bg=document.getElementById('burger'),dd=document.getElementById('dd'),ddb=document.getElementById('ddb');
+bg.addEventListener('click',()=>{const o=nav.classList.toggle('open');bg.setAttribute('aria-expanded',o)});
+ddb.addEventListener('click',()=>{const o=dd.classList.toggle('open');ddb.setAttribute('aria-expanded',o)});
+nav.addEventListener('click',e=>{if(e.target.closest('a')){nav.classList.remove('open');dd.classList.remove('open');bg.setAttribute('aria-expanded',false)}});
+document.addEventListener('click',e=>{if(!dd.contains(e.target))dd.classList.remove('open')});
+
+const ck=document.getElementById('ck'),ov=document.getElementById('ov'),an=document.getElementById('an');
+const get=()=>{try{return localStorage.getItem('tv_ck')}catch(e){return null}};
+const set=v=>{try{localStorage.setItem('tv_ck',v)}catch(e){}ck.classList.remove('show');ov.classList.remove('show')};
+if(!get())ck.classList.add('show');
+document.getElementById('cka').onclick=()=>set('all');
+document.getElementById('ckd').onclick=()=>set('need');
+const openP=e=>{e&&e.preventDefault();an.checked=get()==='all';ov.classList.add('show')};
+document.getElementById('ckm').onclick=openP;document.getElementById('ckopen').onclick=openP;
+document.getElementById('ckx').onclick=()=>ov.classList.remove('show');
+document.getElementById('cks').onclick=()=>set(an.checked?'all':'need');
+ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('show')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){ov.classList.remove('show');dd.classList.remove('open')}});
+document.getElementById('pol').onclick=e=>e.preventDefault();
+}
+</script>
+</body>
+</html>
