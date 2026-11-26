@@ -72,6 +72,8 @@ nav a.on{color:var(--red2)}
 .svc:hover{transform:translateY(-4px);box-shadow:0 18px 36px rgb(0 0 0/.12)}
 .svc .pic{aspect-ratio:4/3;background:linear-gradient(160deg,#2a313b,#141820)}
 .svc .pic svg{width:100%;height:100%;display:block}
+.svc .pic{overflow:hidden}.svc .pic img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
+.svc:hover .pic img{transform:scale(1.06)}
 .svc h3{font-size:18px;font-weight:600;padding:18px 20px 6px}
 .svc span{padding:0 20px 20px;margin-top:auto;color:var(--red2);font-weight:600;font-size:14.5px}
 /* news */
@@ -464,7 +466,7 @@ form button:hover{background:#c02d23}
 document.documentElement.classList.add('js');
 {
 const S=[
- {t:'Железнодорожные перевозки в универсальном подвижном составе',k:'gon'},
+ {t:'Железнодорожные перевозки в универсальном подвижном составе',k:'gon',img:'img/svc1.jpg'},
  {t:'Предоставление полувагонов, крытых вагонов и ИВ-термосов',k:'cnt'},
  {t:'Экспортные и импортные перевозки',k:'route'},
  {t:'Транспортное экспедирование и контроль движения вагонов',k:'info'}];
@@ -474,7 +476,7 @@ const ART={
  info:`<rect x="70" y="46" width="180" height="110" rx="10" fill="#3b434e"/><rect x="82" y="58" width="156" height="86" rx="4" fill="#1a1f27"/><path d="M96 126l30-26 24 14 34-34 40 28" fill="none" stroke="#d9362b" stroke-width="5" stroke-linejoin="round"/><circle cx="184" cy="80" r="6" fill="#fff"/><rect x="140" y="156" width="40" height="14" fill="#3b434e"/>`,
  route:`<path d="M60 150C110 60 170 170 250 60" fill="none" stroke="#8b929b" stroke-width="6" stroke-dasharray="4 12" stroke-linecap="round"/><circle cx="60" cy="150" r="14" fill="#fff"/><circle cx="60" cy="150" r="6" fill="#1a1f27"/><path d="M250 30c-18 0-30 14-30 28 0 20 30 46 30 46s30-26 30-46c0-14-12-28-30-28z" fill="#d9362b"/><circle cx="250" cy="58" r="10" fill="#fff"/>`};
 const id=s=>'svc'+S.indexOf(s);
-document.getElementById('svc').innerHTML=S.map(s=>`<a class="svc rv" href="#request" id="${id(s)}"><div class="pic"><svg viewBox="0 0 320 200" aria-hidden="true"><g class="mv">${ART[s.k]}</g></svg></div><h3>${s.t}</h3><span>Оставить заявку →</span></a>`).join('');
+document.getElementById('svc').innerHTML=S.map(s=>`<a class="svc rv" href="#request" id="${id(s)}"><div class="pic">${s.img?`<img src="${s.img}" alt="" loading="lazy">`:`<svg viewBox="0 0 320 200" aria-hidden="true"><g class="mv">${ART[s.k]}</g></svg>`}</div><h3>${s.t}</h3><span>Оставить заявку →</span></a>`).join('');
 const li=S.map(s=>`<li><a href="#${id(s)}">${s.t}</a></li>`).join('');
 document.getElementById('ddl').innerHTML=li;document.getElementById('fsvc').innerHTML=li;
 const N=[
