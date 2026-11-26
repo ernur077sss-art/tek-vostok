@@ -169,6 +169,15 @@ textarea{min-height:96px;resize:vertical}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--red)}
 form button{grid-column:1/-1;min-height:52px;border:0;border-radius:12px;background:var(--red);color:#fff;font:600 16px Inter,sans-serif;cursor:pointer}
 form button:hover{background:#c02d23}
+.chk{display:flex!important;grid-template-columns:none;gap:10px;align-items:flex-start;font-weight:400;color:var(--mute)}
+.chk input{width:22px;height:22px;min-height:0;flex:none;margin:1px 0 0;accent-color:var(--red)}
+.chk a{color:var(--red2)}
+.doc{max-width:680px;max-height:86vh;overflow:auto}
+.doc h4{margin:18px 0 6px;font:600 16px Onest,sans-serif}
+.doc p{margin:0 0 10px;color:var(--mute);font-size:15px}
+.rq{width:100%;border-collapse:collapse;font-size:15px}
+.rq td{padding:9px 0;border-top:1px solid var(--line);vertical-align:top}
+.rq td:first-child{color:var(--mute);width:42%;padding-right:12px}
 .ok{grid-column:1/-1;margin:0;font-size:14px;color:var(--mute)}
 .wa{position:fixed;right:18px;bottom:18px;z-index:50;width:60px;height:60px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 26px rgb(0 0 0/.25);animation:bob 3s ease-in-out infinite}
 .wa svg{width:30px;height:30px;fill:#fff}
@@ -198,8 +207,8 @@ form button:hover{background:#c02d23}
 <div class="top"><div class="wrap">
   <div class="c">
     <a href="mailto:zhurkin@vostransport.kz"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>zhurkin@vostransport.kz</a>
-    <a href="tel:+77774778391"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>+7 (777) 477-83-91</a>
-    <a href="tel:+77475701255">+7 (747) 570-12-55</a>
+    <a href="tel:+77475701255"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>+7 (747) 570-12-55</a>
+    <a href="tel:+77774778391">+7 (777) 477-83-91</a>
   </div>
   <span class="hrs">ПН–ПТ с 09:00 до 18:00</span>
 </div></div>
@@ -219,7 +228,7 @@ form button:hover{background:#c02d23}
     <li><a href="#geo">География</a></li>
     <li><a href="#contacts">Контакты</a></li>
   </ul></nav>
-  <a class="call" href="tel:+77774778391">+7 (777) 477-83-91</a>
+  <a class="call" href="tel:+77475701255">+7 (747) 570-12-55</a>
 </div></header>
 
 <main id="top">
@@ -304,7 +313,7 @@ form button:hover{background:#c02d23}
     <h1>Логистика и сервис для требовательных клиентов</h1>
     <p>Железнодорожная логистика и транспортное сопровождение грузов по Казахстану, странам СНГ и на экспорт.</p>
     <div class="btns">
-      <a class="call" href="tel:+77774778391">Позвонить: +7 (777) 477-83-91</a>
+      <a class="call" href="tel:+77475701255">Позвонить: +7 (747) 570-12-55</a>
       <a class="ghost" href="#services">Наши услуги</a>
     </div>
   </div>
@@ -385,7 +394,7 @@ form button:hover{background:#c02d23}
 <section class="band req" id="request" style="background:var(--soft)"><div class="wrap">
   <div class="rv">
     <h2>Рассчитаем перевозку</h2>
-    <p>Оставьте заявку — она придёт нам в WhatsApp, и менеджер свяжется с вами в рабочее время. Или позвоните: <a href="tel:+77774778391" style="color:var(--red2);font-weight:600;white-space:nowrap">+7 (777) 477-83-91</a></p>
+    <p>Оставьте заявку — она придёт нам в WhatsApp, и менеджер свяжется с вами в рабочее время. Или позвоните: <a href="tel:+77475701255" style="color:var(--red2);font-weight:600;white-space:nowrap">+7 (747) 570-12-55</a> или <a href="tel:+77774778391" style="color:var(--red2);font-weight:600;white-space:nowrap">+7 (777) 477-83-91</a></p>
   </div>
   <form id="f" class="rv" style="background:var(--card);border:1px solid var(--line)">
     <label>Ваше имя<input id="fn" name="name" required autocomplete="name"></label>
@@ -394,27 +403,28 @@ form button:hover{background:#c02d23}
     <label>Станция назначения<input id="ft" name="to"></label>
     <label class="full">Услуга<select id="fs" name="svc"></select></label>
     <label class="full">Груз и объём<textarea id="fc" name="cargo" placeholder="Например: щебень, 10 вагонов в месяц"></textarea></label>
+    <label class="full chk"><input type="checkbox" id="fagree" required> <span>Согласен на сбор и обработку персональных данных в соответствии с <a href="#" id="pol2">политикой конфиденциальности</a></span></label>
     <button type="submit">Отправить заявку в WhatsApp</button>
-    <p class="ok" id="fok" aria-live="polite">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.</p>
+    <p class="ok" id="fok" aria-live="polite"></p>
   </form>
 </div></section>
 </main>
-<a class="wa" href="https://wa.me/77774778391" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.1 14.9l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 0 1 12 4zm-3.2 4c-.2 0-.5 0-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4.9 2.9.8 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.5z"/></svg></a>
+<a class="wa" href="https://wa.me/77475701255" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.1 14.9l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 0 1 12 4zm-3.2 4c-.2 0-.5 0-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4.9 2.9.8 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.5z"/></svg></a>
 
 <footer id="contacts">
   <div class="wrap">
     <div><a class="logo" href="#top"><i>ТВ</i>ТЭК ВОСТОК</a><p style="margin:0">© ТОО «ТЭК Восток». Все права защищены</p></div>
     <div><h4>Услуги</h4><ul id="fsvc"></ul></div>
-    <div><h4>Полезная информация</h4><ul><li><a href="#" id="pol">Политика конфиденциальности</a></li><li><a href="#" id="ckopen">Настройки cookie</a></li></ul></div>
+    <div><h4>Полезная информация</h4><ul><li><a href="#" id="req">Реквизиты компании</a></li><li><a href="#" id="pol">Политика конфиденциальности</a></li><li><a href="#" id="ckopen">Настройки cookie</a></li></ul></div>
     <div><h4>Контакты</h4><ul>
-      <li>Республика Казахстан</li>
+      <li>Республика Казахстан, г. Астана, р-н Нұра, ул. Е 899, д. 5/3, кв. 110</li>
       <li><a href="tel:+77774778391">+7 (777) 477-83-91</a></li>
       <li><a href="tel:+77475701255">+7 (747) 570-12-55</a></li>
       <li>ПН–ПТ с 09:00 до 18:00</li>
       <li><a href="mailto:zhurkin@vostransport.kz">zhurkin@vostransport.kz</a></li>
     </ul></div>
   </div>
-  <div class="copy"><div class="wrap"><span>Copyright © <span id="yr">2026</span> ТЭК ВОСТОК</span><span>Логистика и сервис для требовательных клиентов</span></div></div>
+  <div class="copy"><div class="wrap"><span>© <span id="yr">2026</span> Товарищество с ограниченной ответственностью «ТЭК Восток» · БИН 180640000978</span><span>Логистика и сервис для требовательных клиентов</span></div></div>
 </footer>
 
 <div class="ck" id="ck" role="dialog" aria-label="Cookie-файлы">
@@ -425,6 +435,38 @@ form button:hover{background:#c02d23}
     <button class="b r" id="cka">Принять все</button>
   </div>
 </div>
+<div class="ov" id="ovr"><div class="pn doc" role="dialog" aria-modal="true" aria-labelledby="rqh">
+  <button class="x" data-close aria-label="Закрыть">×</button>
+  <h3 id="rqh">Реквизиты компании</h3>
+  <table class="rq"><tbody>
+    <tr><td>Полное наименование</td><td>Товарищество с ограниченной ответственностью «ТЭК Восток»</td></tr>
+    <tr><td>Сокращённое наименование</td><td>ТОО «ТЭК Восток»</td></tr>
+    <tr><td>БИН</td><td>180640000978</td></tr>
+    <tr><td>Юридический и почтовый адрес</td><td>Республика Казахстан, г. Астана, р-н Нұра, ул. Е 899, д. 5/3, кв. 110</td></tr>
+    <tr><td>ОКЭД</td><td>49200; 52291 — транспортно-экспедиционные услуги</td></tr>
+    <tr><td>Свидетельство по НДС</td><td>серия 18001 № 0571480 от 02.06.2018</td></tr>
+    <tr><td>ОКПО</td><td>59173836</td></tr>
+    <tr><td>ЖД код</td><td>0071</td></tr>
+    <tr><td>Директор</td><td>Журкин Николай Александрович, действует на основании Устава</td></tr>
+    <tr><td>Телефон</td><td>+7 777 477 83 91, +7 747 570 12 55</td></tr>
+    <tr><td>E-mail</td><td>zhurkin@vostransport.kz</td></tr>
+  </tbody></table>
+</div></div>
+<div class="ov" id="ovp"><div class="pn doc" role="dialog" aria-modal="true" aria-labelledby="pph">
+  <button class="x" data-close aria-label="Закрыть">×</button>
+  <h3 id="pph">Политика конфиденциальности</h3>
+  <p>Политика определяет порядок сбора и обработки персональных данных посетителей сайта в соответствии с Законом Республики Казахстан «О персональных данных и их защите».</p>
+  <h4>Кто обрабатывает данные</h4>
+  <p>ТОО «ТЭК Восток», БИН 180640000978, Республика Казахстан, г. Астана, р-н Нұра, ул. Е 899, д. 5/3, кв. 110; e-mail zhurkin@vostransport.kz.</p>
+  <h4>Какие данные мы собираем</h4>
+  <p>Имя, номер телефона и сведения о грузе и маршруте, которые вы указываете в форме заявки, а также технические данные cookie-файлов, если вы дали на это согласие.</p>
+  <h4>Зачем</h4>
+  <p>Чтобы связаться с вами, рассчитать стоимость перевозки и подготовить договор. Мы не передаём данные третьим лицам, кроме случаев, предусмотренных законодательством Республики Казахстан.</p>
+  <h4>Как отправляется заявка</h4>
+  <p>Заявка с сайта передаётся через мессенджер WhatsApp на телефон компании. Сайт сам не хранит введённые данные.</p>
+  <h4>Ваши права</h4>
+  <p>Вы можете отозвать согласие, запросить сведения о своих данных, их изменение или удаление, написав на zhurkin@vostransport.kz.</p>
+</div></div>
 <div class="ov" id="ov"><div class="pn" role="dialog" aria-modal="true" aria-labelledby="pnh">
   <button class="x" id="ckx" aria-label="Закрыть">×</button>
   <h3 id="pnh">Центр предпочтений cookie-файлов</h3>
@@ -484,13 +526,17 @@ document.getElementById('ckx').onclick=()=>ov.classList.remove('show');
 document.getElementById('cks').onclick=()=>set(an.checked?'all':'need');
 ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('show')});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){ov.classList.remove('show');dd.classList.remove('open')}});
-document.getElementById('pol').onclick=e=>e.preventDefault();
+const openOv=id=>e=>{e.preventDefault();document.getElementById(id).classList.add('show')};
+document.getElementById('pol').onclick=openOv('ovp');document.getElementById('pol2').onclick=openOv('ovp');document.getElementById('req').onclick=openOv('ovr');
+document.querySelectorAll('[data-close]').forEach(b=>b.onclick=()=>b.closest('.ov').classList.remove('show'));
+['ovp','ovr'].forEach(i=>{const o=document.getElementById(i);o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('show')})});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.ov.show').forEach(o=>o.classList.remove('show'))});
 document.getElementById('fs').innerHTML=S.map(s=>`<option>${s.t}</option>`).join('');
 document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();
  const v=i=>document.getElementById(i).value.trim();
  const t=`Заявка с сайта ТЭК Восток%0AИмя: ${encodeURIComponent(v('fn'))}%0AТелефон: ${encodeURIComponent(v('fp'))}%0AОткуда: ${encodeURIComponent(v('ff'))}%0AКуда: ${encodeURIComponent(v('ft'))}%0AУслуга: ${encodeURIComponent(v('fs'))}%0AГруз: ${encodeURIComponent(v('fc'))}`;
- const a=document.createElement('a');a.href='https://wa.me/77774778391?text='+t;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();
- document.getElementById('fok').textContent='Открываем WhatsApp — нажмите «Отправить» в чате. Если не открылся, позвоните: +7 (777) 477-83-91.'});
+ const a=document.createElement('a');a.href='https://wa.me/77475701255?text='+t;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();
+ document.getElementById('fok').textContent='Открываем WhatsApp — нажмите «Отправить» в чате. Если не открылся, позвоните: +7 (747) 570-12-55 или +7 (777) 477-83-91.'});
 const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const bv=document.getElementById('bgv');
 bv.addEventListener('playing',()=>bv.classList.add('on'));
