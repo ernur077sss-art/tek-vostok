@@ -53,7 +53,7 @@ nav a.on{color:var(--red2)}
 /* hero */
 .hero{position:relative;background:#1a1f27;color:#fff;overflow:hidden}
 .hero .scene{position:absolute;inset:0;width:100%;height:100%}
-.hero .wrap{position:relative;min-height:max(600px,calc(500px + 15vw));display:flex;flex-direction:column;justify-content:flex-start;padding-top:clamp(48px,8vw,104px)}
+.hero .wrap{position:relative;min-height:max(600px,calc(460px + 14vw));display:flex;flex-direction:column;justify-content:flex-start;padding-top:clamp(48px,8vw,104px)}
 .hero h1{font-size:clamp(34px,4.6vw,58px);font-weight:800;max-width:17ch;text-shadow:0 2px 18px rgb(0 0 0/.35)}
 .hero p{font-size:17px;max-width:46ch;color:#e3e6ea;margin:18px 0 28px}
 .btns{display:flex;flex-wrap:wrap;gap:12px}
@@ -182,7 +182,7 @@ form button:hover{background:#c02d23}
  .ng{grid-template-columns:minmax(0,1fr)}
  .about .wrap{grid-template-columns:minmax(0,1fr)}
 }
-@media(max-width:600px){.grid,footer .wrap{grid-template-columns:minmax(0,1fr)}.hero .wrap{min-height:560px}.top .hrs{display:none}}
+@media(max-width:600px){.grid,footer .wrap{grid-template-columns:minmax(0,1fr)}.hero .wrap{min-height:660px}.top .hrs{display:none}}
 </style>
 </head>
 <body>
@@ -215,7 +215,7 @@ form button:hover{background:#c02d23}
 
 <main id="top">
 <section class="hero">
-  <svg class="scene" viewBox="0 0 1600 640" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+  <svg class="scene" viewBox="0 -200 1600 840" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
     <defs>
       <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2230"/><stop offset=".55" stop-color="#5a3a3a"/><stop offset=".85" stop-color="#e0774f"/><stop offset="1" stop-color="#f3a764"/></linearGradient>
       <radialGradient id="sun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffe3b0"/><stop offset=".4" stop-color="#ffc178" stop-opacity=".9"/><stop offset="1" stop-color="#ff9a5a" stop-opacity="0"/></radialGradient>
@@ -239,7 +239,7 @@ form button:hover{background:#c02d23}
         <use href="#wh" x="28" y="80"/><use href="#wh" x="58" y="80"/><use href="#wh" x="138" y="80"/><use href="#wh" x="168" y="80"/>
       </g>
     </defs>
-    <rect width="1600" height="640" fill="url(#sky)"/>
+    <rect y="-200" width="1600" height="840" fill="url(#sky)"/>
     <circle cx="1180" cy="430" r="190" fill="url(#sun)"/>
     <circle cx="1180" cy="430" r="52" fill="#ffd9a0"/>
     <g fill="#fff" opacity=".18"><ellipse cx="300" cy="150" rx="120" ry="16"><animate attributeName="cx" from="-200" to="1800" dur="80s" repeatCount="indefinite"/></ellipse><ellipse cx="900" cy="230" rx="160" ry="14"><animate attributeName="cx" from="700" to="2000" dur="60s" repeatCount="indefinite"/></ellipse></g>
@@ -287,11 +287,11 @@ form button:hover{background:#c02d23}
     <g><animateTransform attributeName="transform" type="translate" from="0 0" to="-40 0" dur=".28s" repeatCount="indefinite"/><rect x="0" y="544" width="1680" height="8" fill="url(#slp)"/></g>
     <g fill="#24201f"><animateTransform attributeName="transform" type="translate" from="0 0" to="-800 0" dur="5.5s" repeatCount="indefinite"/>
       <path id="rk" d="M60 600h40l-6-16h-28zM420 590h26l-4-10h-18zM700 610h50l-8-20h-34zM860 600h40l-6-16h-28zM1220 590h26l-4-10h-18zM1500 610h50l-8-20h-34z"/><use href="#rk" x="1600"/></g>
-    <rect width="1600" height="640" fill="url(#shade)"/>
+    <rect y="-200" width="1600" height="840" fill="url(#shade)"/>
   </svg>
   <div class="wrap">
     <h1>Логистика и сервис для требовательных клиентов</h1>
-    <p>Железнодорожные и контейнерные перевозки, транспортное экспедирование и информационное сопровождение грузов — от заявки до станции назначения.</p>
+    <p>Железнодорожные и контейнерные перевозки по Казахстану, России и СНГ — от заявки до станции назначения.</p>
     <div class="btns">
       <a class="call" href="tel:+77475701255">Позвонить: +7 (747) 570-12-55</a>
       <a class="ghost" href="#services">Наши услуги</a>
