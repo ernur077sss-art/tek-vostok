@@ -116,9 +116,58 @@ footer .logo{color:#fff;margin-bottom:14px}
 .sw input:checked+i{background:var(--red)}.sw input:checked+i::after{left:25px}
 .sw input:disabled+i{opacity:.55}
 .sw input:focus-visible+i{outline:3px solid #ff8a80;outline-offset:2px}
-.train{animation:roll 1.4s ease-out both}
-@keyframes roll{from{transform:translateX(-6%);opacity:0}to{transform:none;opacity:1}}
-@media(prefers-reduced-motion:reduce){.train{animation:none}.svc{transition:none}}
+/* reveal on scroll */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.js .rv.in{opacity:1;transform:none}
+.grid .rv:nth-child(2),.steps .rv:nth-child(2),.ng .rv:nth-child(2){transition-delay:.1s}
+.grid .rv:nth-child(3),.steps .rv:nth-child(3),.ng .rv:nth-child(3){transition-delay:.2s}
+.grid .rv:nth-child(4),.steps .rv:nth-child(4){transition-delay:.3s}
+.svc .pic svg .mv{transition:transform .6s ease}
+.svc:hover .pic svg .mv{transform:translateX(18px)}
+.hero h1,.hero p,.hero .btns{animation:up .9s ease both}.hero p{animation-delay:.15s}.hero .btns{animation-delay:.3s}
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+/* process */
+.steps{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.rail{position:absolute;left:6%;right:6%;top:46px;height:6px;border-radius:6px;background:repeating-linear-gradient(90deg,var(--line) 0 14px,transparent 14px 22px)}
+.rail i{position:absolute;top:-11px;width:44px;height:26px;border-radius:5px;background:var(--red);animation:go 7s linear infinite}
+.rail i::after{content:"";position:absolute;left:6px;right:6px;bottom:-6px;height:8px;background:radial-gradient(circle,#15191f 3.5px,transparent 4px) 0 0/16px 8px repeat-x}
+@keyframes go{from{left:0}to{left:calc(100% - 44px)}}
+.step{position:relative;text-align:center;padding:0 6px}
+.step .ic{width:92px;height:92px;margin:0 auto 18px;border-radius:50%;background:var(--card);border:2px solid var(--line);display:grid;place-items:center;box-shadow:0 10px 24px rgb(0 0 0/.08)}
+.step .ic svg{width:44px;height:44px;fill:none;stroke:var(--red2);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.step b{display:block;font:600 19px Onest,sans-serif;margin-bottom:6px}
+.step p{margin:0;color:var(--mute);font-size:15px}
+/* geography */
+.geo{background:var(--steel);color:#fff}
+.geo .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,4vw,64px);align-items:center}
+.geo p{color:#c3c9d1}
+.geo ul{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px}
+.geo li{display:flex;gap:10px;align-items:center}
+.geo li::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgb(217 54 43/.25)}
+.map{width:100%;height:auto;display:block}
+.map .rt{fill:none;stroke:#d9362b;stroke-width:2.5;stroke-dasharray:8 8;animation:dash 1.6s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-32}}
+.map text{fill:#e6e9ed;font:600 15px Inter,sans-serif}
+.pulse{animation:pl 2.4s ease-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes pl{from{transform:scale(.6);opacity:.9}to{transform:scale(2.4);opacity:0}}
+/* request form */
+.req .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,4vw,64px);align-items:start}
+.req p{color:var(--mute)}
+form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;background:var(--soft);padding:clamp(20px,3vw,32px);border-radius:18px}
+form label{display:grid;gap:6px;font-size:14px;font-weight:500}
+form .full{grid-column:1/-1}
+input,select,textarea{font:16px Inter,sans-serif;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;min-height:48px;width:100%}
+textarea{min-height:96px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--red)}
+form button{grid-column:1/-1;min-height:52px;border:0;border-radius:12px;background:var(--red);color:#fff;font:600 16px Inter,sans-serif;cursor:pointer}
+form button:hover{background:#c02d23}
+.ok{grid-column:1/-1;margin:0;font-size:14px;color:var(--mute)}
+.wa{position:fixed;right:18px;bottom:18px;z-index:50;width:60px;height:60px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 10px 26px rgb(0 0 0/.25);animation:bob 3s ease-in-out infinite}
+.wa svg{width:30px;height:30px;fill:#fff}
+@keyframes bob{50%{transform:translateY(-6px)}}
+@media(prefers-reduced-motion:reduce){.js .rv,.svc,.hero h1,.hero p,.hero .btns{transition:none;animation:none;opacity:1;transform:none}.rail i,.map .rt,.pulse,.wa{animation:none}}
+@media(max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:36px}.rail{display:none}.geo .wrap,.req .wrap{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:520px){.steps,form{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:1060px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}footer .wrap{grid-template-columns:repeat(2,minmax(0,1fr))}header .call{display:none}}
 @media(max-width:900px){
  .burger{display:grid;place-items:center}
@@ -155,6 +204,7 @@ footer .logo{color:#fff;margin-bottom:14px}
     <li><a href="#news">Новости</a></li>
     <li><a href="#about">О компании</a></li>
     <li><a href="#social">Социальная ответственность</a></li>
+    <li><a href="#geo">География</a></li>
     <li><a href="#contacts">Контакты</a></li>
   </ul></nav>
   <a class="call" href="tel:+77475701255">+7 (747) 570-12-55</a>
@@ -169,7 +219,7 @@ footer .logo{color:#fff;margin-bottom:14px}
       <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a2b30"/><stop offset="1" stop-color="#1d1a1f"/></linearGradient>
       <linearGradient id="body" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b434e"/><stop offset="1" stop-color="#1c2128"/></linearGradient>
       <linearGradient id="shade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#14181d" stop-opacity=".85"/><stop offset=".45" stop-color="#14181d" stop-opacity=".55"/><stop offset=".75" stop-color="#14181d" stop-opacity="0"/></linearGradient>
-      <g id="wh"><circle r="13" fill="#0e1114"/><circle r="5" fill="#59616b"/></g>
+      <g id="wh"><circle r="13" fill="#0e1114"/><g stroke="#59616b" stroke-width="2.5"><path d="M-10 0H10M0 -10V10M-7 -7L7 7M-7 7L7 -7"><animateTransform attributeName="transform" type="rotate" from="0" to="360" dur=".6s" repeatCount="indefinite"/></path></g><circle r="4" fill="#59616b"/></g>
       <g id="gon">
         <path d="M0 0h196l-6 62H6z" fill="url(#body)"/>
         <path d="M0 0h196v5H0z" fill="#6b7480"/>
@@ -189,9 +239,27 @@ footer .logo{color:#fff;margin-bottom:14px}
     <rect width="1600" height="640" fill="url(#sky)"/>
     <circle cx="1180" cy="430" r="190" fill="url(#sun)"/>
     <circle cx="1180" cy="430" r="52" fill="#ffd9a0"/>
-    <path d="M0 470 Q220 420 460 455 T930 440 T1360 430 T1600 445 V640 H0Z" fill="#4a3236" opacity=".8"/>
-    <path d="M0 500 Q300 470 620 492 T1200 480 T1600 490 V640 H0Z" fill="url(#hill)"/>
-    <g class="train">
+    <g fill="#fff" opacity=".18"><ellipse cx="300" cy="150" rx="120" ry="16"><animate attributeName="cx" from="-200" to="1800" dur="80s" repeatCount="indefinite"/></ellipse><ellipse cx="900" cy="230" rx="160" ry="14"><animate attributeName="cx" from="700" to="2000" dur="60s" repeatCount="indefinite"/></ellipse></g>
+    <g fill="none" stroke="#1b1416" stroke-width="2" stroke-linecap="round" opacity=".7">
+      <path d="M0 0q6-5 12 0q6-5 12 0"><animateMotion path="M820 300 q200 -60 420 -20 t500 -40" dur="26s" repeatCount="indefinite"/></path>
+      <path d="M0 0q5-4 10 0q5-4 10 0"><animateMotion path="M780 320 q220 -50 440 -10 t520 -50" dur="29s" repeatCount="indefinite"/></path>
+    </g>
+    <g><animateTransform attributeName="transform" type="translate" from="0 0" to="-1600 0" dur="120s" repeatCount="indefinite"/>
+      <path d="M0 470c120-50 280-50 400 0c100-25 300-25 400 0c150-60 250-60 400 0c100-30 300-30 400 0c120-50 280-50 400 0c100-25 300-25 400 0c150-60 250-60 400 0c100-30 300-30 400 0V640H0Z" fill="#4a3236" opacity=".8"/></g>
+    <g><animateTransform attributeName="transform" type="translate" from="0 0" to="-1600 0" dur="45s" repeatCount="indefinite"/>
+      <path d="M0 500c150-30 350-30 500 0c120-18 280-18 400 0c150-26 550-26 700 0c150-30 350-30 500 0c120-18 280-18 400 0c150-26 550-26 700 0V640H0Z" fill="url(#hill)"/></g>
+    <g stroke="#1b1618" stroke-width="5"><animateTransform attributeName="transform" type="translate" from="0 0" to="-160 0" dur="1.1s" repeatCount="indefinite"/>
+      <path d="M40 535V380M200 535V380M360 535V380M520 535V380M680 535V380M840 535V380M1000 535V380M1160 535V380M1320 535V380M1480 535V380M1640 535V380M1800 535V380"/>
+      <path d="M24 392h32M184 392h32M344 392h32M504 392h32M664 392h32M824 392h32M984 392h32M1144 392h32M1304 392h32M1464 392h32M1624 392h32M1784 392h32" stroke-width="4"/>
+      <path d="M40 394q80 16 160 0t160 0 160 0 160 0 160 0 160 0 160 0 160 0 160 0 160 0 160 0" fill="none" stroke-width="1.5"/>
+    </g>
+    <g class="train"><animateTransform attributeName="transform" type="translate" values="0 0;0 1.6;0 0" dur=".55s" repeatCount="indefinite"/>
+      <g fill="#cfc6c0">
+        <circle cx="1482" cy="420" r="8"><animate attributeName="cy" values="420;330" dur="2.4s" repeatCount="indefinite"/><animate attributeName="r" values="8;30" dur="2.4s" repeatCount="indefinite"/><animate attributeName="cx" values="1482;1400" dur="2.4s" repeatCount="indefinite"/><animate attributeName="opacity" values=".7;0" dur="2.4s" repeatCount="indefinite"/></circle>
+        <circle cx="1482" cy="420" r="8"><animate attributeName="cy" values="420;330" dur="2.4s" begin=".8s" repeatCount="indefinite"/><animate attributeName="r" values="8;30" dur="2.4s" begin=".8s" repeatCount="indefinite"/><animate attributeName="cx" values="1482;1400" dur="2.4s" begin=".8s" repeatCount="indefinite"/><animate attributeName="opacity" values=".7;0" dur="2.4s" begin=".8s" repeatCount="indefinite"/></circle>
+        <circle cx="1482" cy="420" r="8"><animate attributeName="cy" values="420;330" dur="2.4s" begin="1.6s" repeatCount="indefinite"/><animate attributeName="r" values="8;30" dur="2.4s" begin="1.6s" repeatCount="indefinite"/><animate attributeName="cx" values="1482;1400" dur="2.4s" begin="1.6s" repeatCount="indefinite"/><animate attributeName="opacity" values=".7;0" dur="2.4s" begin="1.6s" repeatCount="indefinite"/></circle>
+      </g>
+      <rect x="1474" y="418" width="16" height="24" rx="2" fill="#0e1114"/>
       <g transform="translate(1340 430)">
         <path d="M0 10h150q24 0 30 30l6 32H0z" fill="#d9362b"/>
         <path d="M0 10h110V-30h-80z" fill="#b8281f"/>
@@ -212,6 +280,10 @@ footer .logo{color:#fff;margin-bottom:14px}
     <rect x="0" y="532" width="1600" height="10" fill="#0b0d10"/>
     <rect x="0" y="530" width="1600" height="3" fill="#8b929b"/>
     <path d="M0 542h1600v98H0z" fill="#17161a"/>
+    <defs><pattern id="slp" width="40" height="10" patternUnits="userSpaceOnUse"><rect width="22" height="7" fill="#2a2629"/></pattern></defs>
+    <g><animateTransform attributeName="transform" type="translate" from="0 0" to="-40 0" dur=".28s" repeatCount="indefinite"/><rect x="0" y="544" width="1680" height="8" fill="url(#slp)"/></g>
+    <g fill="#24201f"><animateTransform attributeName="transform" type="translate" from="0 0" to="-800 0" dur="5.5s" repeatCount="indefinite"/>
+      <path id="rk" d="M60 600h40l-6-16h-28zM420 590h26l-4-10h-18zM700 610h50l-8-20h-34zM860 600h40l-6-16h-28zM1220 590h26l-4-10h-18zM1500 610h50l-8-20h-34z"/><use href="#rk" x="1600"/></g>
     <rect width="1600" height="640" fill="url(#shade)"/>
   </svg>
   <div class="wrap">
@@ -229,6 +301,49 @@ footer .logo{color:#fff;margin-bottom:14px}
   <div class="grid" id="svc"></div>
 </div></section>
 
+<section class="band" id="how" style="padding-top:0"><div class="wrap">
+  <div class="head"><h2>Как мы работаем</h2></div>
+  <div class="steps">
+    <div class="rail" aria-hidden="true"><i></i></div>
+    <div class="step rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg></div><b>Заявка</b><p>Вы звоните или оставляете заявку — менеджер уточняет груз, маршрут и сроки.</p></div>
+    <div class="step rv"><div class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M8 18h8"/></svg></div><b>Расчёт</b><p>Подбираем подвижной состав, считаем тариф и согласуем условия договора.</p></div>
+    <div class="step rv"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="10" rx="1"/><circle cx="7" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/><path d="M7 7V4h10v3"/></svg></div><b>Отправка</b><p>Оформляем документы, организуем погрузку и отправляем груз со станции.</p></div>
+    <div class="step rv"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><path d="m9 9 2 2 4-4"/></svg></div><b>Доставка</b><p>Отслеживаем вагоны в пути и сообщаем о прибытии на станцию назначения.</p></div>
+  </div>
+</div></section>
+
+<section class="band geo" id="geo"><div class="wrap">
+  <div class="rv">
+    <h2>География перевозок</h2>
+    <p>Организуем перевозки по Казахстану, в Россию и страны СНГ — по стандартным и индивидуальным маршрутам.</p>
+    <ul><li>Казахстан — внутренние перевозки</li><li>Россия</li><li>Узбекистан и Кыргызстан</li><li>Беларусь и другие страны СНГ</li></ul>
+  </div>
+  <svg class="map rv" viewBox="0 0 640 420" role="img" aria-label="Схема направлений перевозок">
+    <g fill="#232a33" stroke="#323a45" stroke-width="2">
+      <path d="M150 40c120-30 330-34 470-10v120c-90 10-190 4-280 14-70 8-140 4-190-10z"/>
+      <path d="M170 170c60 12 140 14 210 6 50-4 100 0 150 10l-20 110c-70 10-150 6-220-4-50-8-90-20-120-40z"/>
+      <path d="M40 120l90-20 20 70-80 20z"/>
+      <path d="M200 300c40 10 70 14 110 12l-6 70c-40 4-80-6-110-24z"/>
+      <path d="M380 300l70-4 10 40-70 10z"/>
+    </g>
+    <path class="rt" d="M350 230C300 160 340 110 420 90"/>
+    <path class="rt" d="M350 230C260 190 160 170 90 145"/>
+    <path class="rt" d="M350 230C320 280 290 320 255 345"/>
+    <path class="rt" d="M350 230C380 270 400 300 418 318"/>
+    <path class="rt" d="M350 230C420 220 470 210 520 200"/>
+    <g fill="#fff"><circle r="5"><animateMotion dur="3.6s" repeatCount="indefinite" path="M350 230C300 160 340 110 420 90"/></circle>
+      <circle r="5"><animateMotion dur="4.4s" repeatCount="indefinite" path="M350 230C260 190 160 170 90 145"/></circle>
+      <circle r="5"><animateMotion dur="3s" repeatCount="indefinite" path="M350 230C320 280 290 320 255 345"/></circle>
+      <circle r="5"><animateMotion dur="2.6s" repeatCount="indefinite" path="M350 230C380 270 400 300 418 318"/></circle>
+      <circle r="5"><animateMotion dur="3.2s" repeatCount="indefinite" path="M350 230C420 220 470 210 520 200"/></circle></g>
+    <circle class="pulse" cx="350" cy="230" r="12" fill="#d9362b"/>
+    <circle cx="350" cy="230" r="9" fill="#d9362b" stroke="#fff" stroke-width="3"/>
+    <g fill="#d9362b"><circle cx="420" cy="90" r="6"/><circle cx="90" cy="145" r="6"/><circle cx="255" cy="345" r="6"/><circle cx="418" cy="318" r="6"/><circle cx="520" cy="200" r="6"/></g>
+    <text x="380" y="260">Казахстан</text><text x="430" y="76">Россия</text><text x="52" y="132">Беларусь</text>
+    <text x="196" y="385">Узбекистан</text><text x="430" y="352">Кыргызстан</text><text x="500" y="186">Восток</text>
+  </svg>
+</div></section>
+
 <section class="band news" id="news"><div class="wrap">
   <div class="head"><h2>Последние новости и события</h2><a href="#news">Все новости →</a></div>
   <div class="ng" id="ng"></div>
@@ -242,14 +357,32 @@ footer .logo{color:#fff;margin-bottom:14px}
     <p>Берём на себя подбор подвижного состава, оформление документов, расчёт тарифа и контроль груза в пути. Клиент получает одного ответственного менеджера и понятный статус перевозки на каждом этапе.</p>
     <p id="social">Мы ведём бизнес ответственно: соблюдаем требования безопасности на транспорте, бережём окружающую среду и поддерживаем местные сообщества в регионах присутствия.</p>
   </div>
-  <div class="facts">
+  <div class="facts rv">
     <div><b>4</b><small>направления услуг</small></div>
     <div><b>24/7</b><small>контроль груза в пути</small></div>
     <div><b>1</b><small>менеджер на весь заказ</small></div>
     <div><b>СНГ</b><small>география перевозок</small></div>
   </div>
 </div></section>
+
+<section class="band req" id="request" style="background:var(--soft)"><div class="wrap">
+  <div class="rv">
+    <h2>Рассчитаем перевозку</h2>
+    <p>Оставьте заявку — она придёт нам в WhatsApp, и менеджер свяжется с вами в рабочее время. Или позвоните: <a href="tel:+77475701255" style="color:var(--red2);font-weight:600;white-space:nowrap">+7 (747) 570-12-55</a></p>
+  </div>
+  <form id="f" class="rv" style="background:var(--card);border:1px solid var(--line)">
+    <label>Ваше имя<input id="fn" name="name" required autocomplete="name"></label>
+    <label>Телефон<input id="fp" name="phone" type="tel" required autocomplete="tel" placeholder="+7"></label>
+    <label>Станция отправления<input id="ff" name="from"></label>
+    <label>Станция назначения<input id="ft" name="to"></label>
+    <label class="full">Услуга<select id="fs" name="svc"></select></label>
+    <label class="full">Груз и объём<textarea id="fc" name="cargo" placeholder="Например: щебень, 10 вагонов в месяц"></textarea></label>
+    <button type="submit">Отправить заявку в WhatsApp</button>
+    <p class="ok" id="fok" aria-live="polite">Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности.</p>
+  </form>
+</div></section>
 </main>
+<a class="wa" href="https://wa.me/77475701255" target="_blank" rel="noopener" aria-label="Написать в WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.1 14.9l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 0 1 12 4zm-3.2 4c-.2 0-.5 0-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3 2.4.9 2.9.8 3.4.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4l-2-1c-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1-.3-.2-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.5-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.5z"/></svg></a>
 
 <footer id="contacts">
   <div class="wrap">
@@ -283,6 +416,7 @@ footer .logo{color:#fff;margin-bottom:14px}
 </div></div>
 
 <script>
+document.documentElement.classList.add('js');
 {
 const S=[
  {t:'Железнодорожные перевозки в универсальном подвижном составе',k:'gon'},
@@ -295,14 +429,14 @@ const ART={
  info:`<rect x="70" y="46" width="180" height="110" rx="10" fill="#3b434e"/><rect x="82" y="58" width="156" height="86" rx="4" fill="#1a1f27"/><path d="M96 126l30-26 24 14 34-34 40 28" fill="none" stroke="#d9362b" stroke-width="5" stroke-linejoin="round"/><circle cx="184" cy="80" r="6" fill="#fff"/><rect x="140" y="156" width="40" height="14" fill="#3b434e"/>`,
  route:`<path d="M60 150C110 60 170 170 250 60" fill="none" stroke="#8b929b" stroke-width="6" stroke-dasharray="4 12" stroke-linecap="round"/><circle cx="60" cy="150" r="14" fill="#fff"/><circle cx="60" cy="150" r="6" fill="#1a1f27"/><path d="M250 30c-18 0-30 14-30 28 0 20 30 46 30 46s30-26 30-46c0-14-12-28-30-28z" fill="#d9362b"/><circle cx="250" cy="58" r="10" fill="#fff"/>`};
 const id=s=>'svc'+S.indexOf(s);
-document.getElementById('svc').innerHTML=S.map(s=>`<a class="svc" href="#services" id="${id(s)}"><div class="pic"><svg viewBox="0 0 320 200" aria-hidden="true">${ART[s.k]}</svg></div><h3>${s.t}</h3><span>Подробнее →</span></a>`).join('');
+document.getElementById('svc').innerHTML=S.map(s=>`<a class="svc rv" href="#request" id="${id(s)}"><div class="pic"><svg viewBox="0 0 320 200" aria-hidden="true"><g class="mv">${ART[s.k]}</g></svg></div><h3>${s.t}</h3><span>Оставить заявку →</span></a>`).join('');
 const li=S.map(s=>`<li><a href="#${id(s)}">${s.t}</a></li>`).join('');
 document.getElementById('ddl').innerHTML=li;document.getElementById('fsvc').innerHTML=li;
 const N=[
  {d:'20.11.2026',t:'ТЭК ВОСТОК запустил новое направление контейнерных перевозок'},
  {d:'05.11.2026',t:'Итоги работы компании за октябрь 2026 года'},
  {d:'15.10.2026',t:'Расширили географию перевозок по странам СНГ'}];
-document.getElementById('ng').innerHTML=N.map(n=>`<article class="n"><time>${n.d}</time><h3>${n.t}</h3><a href="#news">Подробнее →</a></article>`).join('');
+document.getElementById('ng').innerHTML=N.map(n=>`<article class="n rv"><time>${n.d}</time><h3>${n.t}</h3><a href="#news">Подробнее →</a></article>`).join('');
 document.getElementById('yr').textContent=new Date().getFullYear();
 
 const nav=document.getElementById('nav'),bg=document.getElementById('burger'),dd=document.getElementById('dd'),ddb=document.getElementById('ddb');
@@ -324,6 +458,16 @@ document.getElementById('cks').onclick=()=>set(an.checked?'all':'need');
 ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('show')});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){ov.classList.remove('show');dd.classList.remove('open')}});
 document.getElementById('pol').onclick=e=>e.preventDefault();
+document.getElementById('fs').innerHTML=S.map(s=>`<option>${s.t}</option>`).join('');
+document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();
+ const v=i=>document.getElementById(i).value.trim();
+ const t=`Заявка с сайта ТЭК ВОСТОК%0AИмя: ${encodeURIComponent(v('fn'))}%0AТелефон: ${encodeURIComponent(v('fp'))}%0AОткуда: ${encodeURIComponent(v('ff'))}%0AКуда: ${encodeURIComponent(v('ft'))}%0AУслуга: ${encodeURIComponent(v('fs'))}%0AГруз: ${encodeURIComponent(v('fc'))}`;
+ const a=document.createElement('a');a.href='https://wa.me/77475701255?text='+t;a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();
+ document.getElementById('fok').textContent='Открываем WhatsApp — нажмите «Отправить» в чате. Если не открылся, позвоните: +7 (747) 570-12-55.'});
+const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(rm)document.querySelectorAll('svg').forEach(x=>x.pauseAnimations&&x.pauseAnimations());
+const els=document.querySelectorAll('.rv');
+if('IntersectionObserver' in window&&!rm){const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}}),{threshold:.15});els.forEach(x=>io.observe(x))}else els.forEach(x=>x.classList.add('in'));
 }
 </script>
 </body>
