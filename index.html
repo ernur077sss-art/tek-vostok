@@ -199,7 +199,8 @@ form button:hover{background:#c02d23}
  .burger{display:grid;place-items:center}
  nav{position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);display:none;padding:8px max(4vw,16px) 16px}
  nav.open{display:block}
- nav>ul{flex-direction:column;align-items:stretch}
+ nav>ul{flex-direction:column;align-items:stretch;white-space:normal}
+ nav{max-height:calc(100svh - 72px);overflow-y:auto}
  .dd ul{position:static;width:auto;box-shadow:none;border:0;padding:0 0 0 12px;display:none}
  .dd:hover ul{display:none}.dd.open ul{display:block}
 }
@@ -210,6 +211,7 @@ form button:hover{background:#c02d23}
 @media(max-width:600px){
  #ng{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 calc(-1*max(4vw,16px));padding:4px max(4vw,16px) 14px;scroll-padding:0 max(4vw,16px);-webkit-overflow-scrolling:touch}
  #ng .n{flex:0 0 84%;scroll-snap-align:start}
+ .copy .wrap{padding-bottom:84px}
  .wa{width:54px;height:54px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom))}
  .band{padding:44px 0}
  h2{font-size:28px}
